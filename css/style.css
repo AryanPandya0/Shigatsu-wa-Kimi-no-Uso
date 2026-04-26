@@ -1,0 +1,485 @@
+:root {
+    /* Soft pastel tones */
+    --clr-pink: #f7c6d9;
+    --clr-blue: #a8d8ea;
+    --clr-yellow: #fff3b0;
+    --clr-lavender: #d5c6e0;
+    --clr-white: #ffffff;
+    --clr-text-main: #3a3a3a;
+    --clr-text-light: #7a7a7a;
+
+    /* Glassmorphism settings */
+    --glass-bg: rgba(255, 255, 255, 0.35);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(168, 216, 234, 0.37);
+
+    /* Fonts */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-script: 'Dancing Script', cursive;
+
+    /* Spacing & Transitions */
+    --border-radius: 20px;
+    --transition-slow: 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-fast: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default; /* Soften cursor default */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text-main);
+    background: linear-gradient(135deg, #fbc2eb 0%, #a18cd1 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    position: relative;
+    /* Soft vignette */
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.05);
+}
+
+/* Base Utility Classes */
+.fullscreen {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.content-section {
+    min-height: 80vh;
+    padding: 10vh 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+.title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--clr-white);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 1px;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--clr-white);
+    margin-bottom: 4rem;
+    text-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+.handwritten {
+    font-family: var(--font-script);
+    color: var(--clr-text-main);
+    font-size: 2rem;
+}
+
+.hero-quote {
+    color: var(--clr-text-main);
+    font-size: 2.5rem;
+    opacity: 0.9;
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+    transition: var(--transition-slow);
+}
+
+/* Background Layers */
+.sky-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background: linear-gradient(to bottom, var(--clr-pink), var(--clr-blue));
+    opacity: 0.6;
+    transition: background 2s ease;
+}
+
+.petal-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none; /* Let clicks pass through */
+}
+
+/* Audio Controls */
+.audio-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 12px;
+    border-radius: 50%;
+    z-index: 100;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+}
+
+.audio-controls button {
+    background: transparent;
+    border: none;
+    color: var(--clr-text-main);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.audio-controls:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+/* Hero Section Specifics */
+.quote-box {
+    margin-top: 2rem;
+    padding: 1.5rem 3rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.8;
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--clr-white);
+}
+
+.scroll-indicator .line {
+    width: 2px;
+    height: 40px;
+    background: var(--clr-white);
+    animation: scrollLine 2s infinite ease-in-out;
+}
+
+@keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    50.1% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* Story Overview */
+.story-text {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    line-height: 2;
+    margin-bottom: 2rem;
+    color: var(--clr-white);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.story-text.highlighter {
+    font-style: italic;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--clr-yellow);
+    margin-top: 4rem;
+}
+
+/* Character Grid */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+.char-card {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.char-card .img-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--clr-white);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    transition: var(--transition-slow);
+}
+
+.char-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.char-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.char-card .theme {
+    font-size: 0.9rem;
+    color: var(--clr-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.char-card .hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 243, 176, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    border-radius: var(--border-radius);
+    transition: var(--transition-fast);
+    transform: translateY(20px);
+}
+
+.char-card:hover .hover-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.char-card:hover .img-wrapper {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+.char-quote {
+    font-size: 1.5rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Music Player */
+.music-player-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.music-card {
+    padding: 3rem;
+    position: relative;
+}
+
+.music-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.music-card .small {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.play-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    background: var(--clr-white);
+    color: var(--clr-pink);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: var(--transition-fast);
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(247, 198, 217, 0.6);
+    color: var(--clr-blue);
+}
+
+.visualizer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+    height: 50px;
+    margin-top: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.visualizer.active {
+    opacity: 1;
+}
+
+.visualizer .bar {
+    width: 10px;
+    background: var(--clr-lavender);
+    border-radius: 5px;
+    height: 10px; /* modified by JS */
+}
+
+/* Quotes Section */
+.cinematic-quote {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--clr-white);
+    max-width: 900px;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+/* Symbolism */
+.symbol-flex {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.symbol-item {
+    max-width: 300px;
+}
+
+.sym-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1), 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.color-ball {
+    background: linear-gradient(135deg, var(--clr-blue), var(--clr-lavender));
+}
+
+.soft-petal {
+    background: linear-gradient(135deg, var(--clr-pink), var(--clr-yellow));
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(45deg);
+}
+
+.symbol-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--clr-white);
+}
+
+/* Finale Letter */
+.letter-box {
+    width: 90%;
+    max-width: 700px;
+    padding: 4rem;
+    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.6); /* Slightly more opaque for readability */
+}
+
+.letter-content p {
+    font-size: 1.2rem;
+    line-height: 2.2;
+    margin-bottom: 1.5rem;
+    color: var(--clr-text-main);
+}
+
+.align-right {
+    text-align: right;
+    font-size: 1.8rem;
+    margin-top: 3rem;
+}
+
+.final-thank-you {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: var(--clr-white);
+    text-shadow: 0 0 20px rgba(255,255,255,0.8);
+    opacity: 0;
+}
+
+/* GSAP Initial States (prevents flash of unstyled content) */
+.fade-up, .fade-scroll, .typewriter-text {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 5vh 5vw;
+    }
+    
+    .letter-box {
+        padding: 2rem;
+    }
+}

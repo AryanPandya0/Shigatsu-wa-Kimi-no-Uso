@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Lie in April | Tribute</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Audio Controls -->
+    <div id="audioControls" class="glass-panel audio-controls">
+        <button id="toggleAudio" aria-label="Toggle Audio">
+            <svg id="icon-unmute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2.37L5.59 8H2V16H5.59L12 21.63V2.37ZM14.93 7.07L16.34 5.66C18.99 8.31 18.99 12.63 16.34 15.28L14.93 13.87C16.81 12 16.81 8.94 14.93 7.07ZM18.78 3.22L20.2 1.8C25.33 6.94 25.33 15.11 20.2 20.25L18.78 18.84C23.14 14.47 23.14 7.58 18.78 3.22Z"/></svg>
+            <svg id="icon-mute" style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M21 3L3 21M12 2.37L5.59 8H2V16H5.59L12 21.63V2.37Z"/></svg>
+        </button>
+    </div>
+
+    <!-- Background Layer (Global) -->
+    <div class="sky-background"></div>
+    <canvas id="petalCanvas" class="petal-layer"></canvas>
+
+    <!-- App Content Wrapper -->
+    <main id="app">
+        
+        <!-- Section 1: Hero -->
+        <section id="hero" class="fullscreen flex-center column">
+            <h1 class="title fade-up">Your Lie in April</h1>
+            <p class="subtitle fade-up delay-1">A story of music, love, and fleeting moments</p>
+            <div class="quote-box fade-up delay-2">
+                <p class="handwritten hero-quote">“Did it reach her… my music?”</p>
+            </div>
+            
+            <div class="scroll-indicator fade-up delay-3">
+                <span>Scroll Down</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!-- Section 2: Story Overview -->
+        <section id="story" class="content-section">
+            <div class="container text-center">
+                <p class="story-text fade-scroll">Life is like a piano.</p>
+                <p class="story-text fade-scroll">The white keys represent happiness, the black keys show sadness.</p>
+                <p class="story-text fade-scroll">But as you go through life's journey, remember that the black keys also make music.</p>
+                <p class="story-text fade-scroll highlighter">Spring, the season I met you, is coming.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Characters -->
+        <section id="characters" class="content-section">
+            <div class="container">
+                <h2 class="section-title fade-scroll">The Performers</h2>
+                <div class="character-grid">
+                    
+                    <div class="char-card glass-panel fade-scroll">
+                        <div class="img-wrapper">
+                            <img src="assets/kousei.png" alt="Kousei Arima">
+                        </div>
+                        <h3>Kousei Arima</h3>
+                        <p class="theme">The Human Metronome</p>
+                        <div class="hover-content">
+                            <p class="handwritten char-quote">"A piano isn't something you play with your hands. You play it with your heart."</p>
+                        </div>
+                    </div>
+
+                    <div class="char-card glass-panel fade-scroll delay-1">
+                        <div class="img-wrapper">
+                            <img src="assets/kaori.png" alt="Kaori Miyazono">
+                        </div>
+                        <h3>Kaori Miyazono</h3>
+                        <p class="theme">The Bright Light</p>
+                        <div class="hover-content">
+                            <p class="handwritten char-quote">"Whether you're sad, you're a mess, or you've hit rock bottom, you still have to play!"</p>
+                        </div>
+                    </div>
+
+                    <div class="char-card glass-panel fade-scroll delay-2">
+                        <div class="img-wrapper">
+                            <img src="assets/tsubaki.png" alt="Tsubaki Sawabe">
+                        </div>
+                        <h3>Tsubaki Sawabe</h3>
+                        <p class="theme">The Steady Anchor</p>
+                        <div class="hover-content">
+                            <p class="handwritten char-quote">"Even though I'm bitter over losing, even though I'm depressed... I still want to throw the ball."</p>
+                        </div>
+                    </div>
+
+                    <div class="char-card glass-panel fade-scroll delay-3">
+                        <div class="img-wrapper">
+                            <img src="assets/watari.png" alt="Ryota Watari">
+                        </div>
+                        <h3>Ryota Watari</h3>
+                        <p class="theme">The Loyal Star</p>
+                        <div class="hover-content">
+                            <p class="handwritten char-quote">"It's only natural for the girl you like to be in love with someone else."</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Music Experience -->
+        <section id="music" class="content-section flex-center">
+            <div class="container text-center">
+                <h2 class="section-title fade-scroll">The Melody That Saved Me</h2>
+                
+                <div class="music-player-container fade-scroll">
+                    <div class="music-card glass-panel">
+                        <div class="sheet-ornament"></div>
+                        <h3>Chopin - Ballade No. 1 in G Minor, Op. 23</h3>
+                        <p class="handwritten small">The final performance...</p>
+                        <button id="playTheme" class="play-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor"><path d="M8 5V19L19 12L8 5Z"/></svg>
+                        </button>
+                        <div class="visualizer" id="audioVisualizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Cinematic Quotes -->
+        <section id="quotes" class="fullscreen flex-center">
+            <div class="quote-container text-center">
+                <p id="typewriter-1" class="cinematic-quote handwritten typewriter-text">"Was I able to live inside your heart?"</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Symbolism -->
+        <section id="symbolism" class="content-section">
+            <div class="container text-center">
+                <h2 class="section-title fade-scroll">Colors of Emotion</h2>
+                <div class="symbol-flex">
+                    <div class="symbol-item fade-scroll delay-1">
+                        <div id="symColor" class="sym-icon circle color-ball"></div>
+                        <h4>The Monochrome World</h4>
+                        <p>How grief silences color and sound.</p>
+                    </div>
+                    <div class="symbol-item fade-scroll delay-2">
+                        <div id="symPetal" class="sym-icon circle soft-petal"></div>
+                        <h4>Cherry Blossoms</h4>
+                        <p>The beauty of fleeting moments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Final Tribute Letter -->
+        <section id="finale" class="fullscreen">
+            <div class="content flex-center column">
+                <div class="letter-box glass-panel fade-scroll">
+                    <div class="letter-content" id="finalLetter">
+                        <!-- Typewriter effect will populate this -->
+                        <p>Dear Kousei Arima,</p>
+                        <p>It feels weird writing a letter to someone you were just with...</p>
+                        <p>Thank you.</p>
+                        <p>We'll meet again in spring.</p>
+                        <p class="handwritten align-right">A spring without you is coming.</p>
+                    </div>
+                </div>
+                <p class="final-thank-you fade-scroll delay-3">Thank you for being in my life.</p>
+            </div>
+            <!-- Extra padding to allow scrolling past the end naturally -->
+            <div style="height:20vh;"></div>
+        </section>
+
+    </main>
+
+    <!-- Libraries -->
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Howler for Audio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+    <!-- App Logic -->
+    <script src="js/audio.js"></script>
+    <script src="js/canvas-petals.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

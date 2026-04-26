@@ -31,10 +31,6 @@ A cinematic, highly aesthetic, and emotionally immersive tribute website dedicat
 2.  Open `index.html` in your favorite browser.
 3.  Enjoy the melody.
 
-## 📸 Screenshots
-
-*(Add your screenshots here)*
-
 ## 🎹 Character Profiles
 
 - **Kousei Arima**: The Human Metronome.
